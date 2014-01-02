@@ -1,7 +1,5 @@
-WebSocket-Example-for-Device-By-Server-Side
-===========================================
 Client-side : [WebSocket-Example-for-Device-By-Chrome-Extension](https://github.com/ethan0417/WebSocket-Example-for-Device-By-Chrome-Extension) 
-
+---
 This example is a copy of example from
 [websocket-multiplex](https://github.com/sockjs/websocket-multiplex/)
 
