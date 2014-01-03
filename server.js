@@ -16,7 +16,7 @@ var multiplexer = new websocket_multiplex.MultiplexServer(service);
 var app = express.createServer();
 service.installHandlers(app, {prefix:'/multiplex'});
 
-console.log(' [*] Listening on 0.0.0.0:9999' );
+console.log('Listening on your.machine.ip:9999' );
 app.listen(9999, '0.0.0.0');
 
 app.get('/:id/client', function (req, res) {
@@ -28,21 +28,15 @@ app.get('/:id', function(req, res){
   var connect = [];
   ann.on('connection', function(conn) {
       connect.push(conn);
-      
-      //conn.write('Ann says hi!');
+      console.log(connect);
       conn.on('data', function(data) {
-        console.log('==== data ====');
-        console.log(data);
         connect[0].write(data);
-        /*
-        for(var i=0; i<connect.length; i++){
-          connect[i].write(data);
-        }
-        */
-        //conn.write(data);
+      });
+      conn.on('close', function(){
+        console.log('close connect : '+ connect.indexOf(conn));
+        connect.splice(connect.indexOf(conn), 1);
       });
   });
-  //res.sendfile(__dirname + '/1.html');
   res.send({status:true});
 });
 
