@@ -20,7 +20,7 @@ console.log(' [*] Listening on 0.0.0.0:9999' );
 app.listen(9999, '0.0.0.0');
 
 app.get('/:id/client', function (req, res) {
-    res.sendfile(__dirname + '/1.html');
+    res.sendfile('/1.html', {root: __dirname});
 });
 
 app.get('/:id', function(req, res){
