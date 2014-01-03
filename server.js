@@ -16,8 +16,8 @@ var multiplexer = new websocket_multiplex.MultiplexServer(service);
 var app = express.createServer();
 service.installHandlers(app, {prefix:'/multiplex'});
 
-console.log('Listening on your.machine.ip:9999' );
-app.listen(9999, '0.0.0.0');
+console.log('Listening on your.machine.ip:3000' );
+app.listen(3000, '0.0.0.0');
 
 app.get('/:id/client', function (req, res) {
     res.sendfile('/1.html', {root: __dirname});
